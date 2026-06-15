@@ -1,20 +1,17 @@
 import '../data/database_helper.dart';
 import '../models/models.dart';
 
-/// Helpers de data e CRUD de sessões de treino + execuções.
 class TrainingSessionRepository {
   final _dbHelper = DatabaseHelper.instance;
 
   static String fmt(DateTime d) =>
       '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
-  /// Início da semana ISO (segunda-feira) de uma data.
   static DateTime weekStart(DateTime d) {
     final day = DateTime(d.year, d.month, d.day);
     return day.subtract(Duration(days: day.weekday - 1));
   }
 
-  /// Existe sessão para a ficha na semana corrente?
   Future<WeekSession> getThisWeekSession(int planId) async {
     final db = await _dbHelper.database;
     final now = DateTime.now();
@@ -31,7 +28,6 @@ class TrainingSessionRepository {
     return WeekSession(exists: true, sessionId: rows.first['id'] as int);
   }
 
-  /// Cria uma sessão na data informada e grava as execuções agregadas.
   Future<int> createSession({
     required int planId,
     required DateTime performedDate,
@@ -56,7 +52,6 @@ class TrainingSessionRepository {
     });
   }
 
-  /// Execuções de uma sessão (com nome do exercício), para edição.
   Future<List<ExecutionInfo>> getSessionExecutions(int sessionId) async {
     final db = await _dbHelper.database;
     final rows = await db.rawQuery('''
@@ -83,7 +78,6 @@ class TrainingSessionRepository {
     return rows.first['training_plan_id'] as int;
   }
 
-  /// Atualiza os valores agregados de cada execução de uma sessão.
   Future<void> updateExecutions(List<ExecutionInfo> executions) async {
     final db = await _dbHelper.database;
     await db.transaction((txn) async {
@@ -104,7 +98,6 @@ class TrainingSessionRepository {
         .delete('training_sessions', where: 'id = ?', whereArgs: [sessionId]);
   }
 
-  /// Primeira data de sessão registrada para uma ficha (para período padrão).
   Future<String?> getFirstDate(int planId) async {
     final db = await _dbHelper.database;
     final rows = await db.query(

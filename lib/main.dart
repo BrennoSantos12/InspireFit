@@ -14,8 +14,6 @@ import 'repositories/training_session_repository.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Em desktop (Linux/Windows/macOS) o sqflite usa o backend FFI.
-  // No Android/iOS o backend nativo é usado automaticamente.
   if (!kIsWeb && (Platform.isLinux || Platform.isWindows || Platform.isMacOS)) {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;

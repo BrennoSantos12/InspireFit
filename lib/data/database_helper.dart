@@ -5,11 +5,6 @@ import 'seeds/days_seed.dart';
 import 'seeds/trainings_seed.dart';
 import 'seeds/exercises_seed.dart';
 
-/// Singleton de acesso ao banco SQLite local do dispositivo.
-///
-/// Cria o schema (espelhando o canvas, sem `user_id`) e popula os seeds de
-/// dias, treinos e exercícios na primeira execução. Mantém
-/// `PRAGMA foreign_keys = ON` para garantir os ON DELETE CASCADE.
 class DatabaseHelper {
   DatabaseHelper._();
   static final DatabaseHelper instance = DatabaseHelper._();

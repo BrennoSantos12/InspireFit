@@ -1,11 +1,9 @@
 import '../data/database_helper.dart';
 import '../models/models.dart';
 
-/// CRUD de fichas (training_plans) e seus exercícios.
 class TrainingPlanRepository {
   final _dbHelper = DatabaseHelper.instance;
 
-  /// Todas as fichas com nomes de treino e dia resolvidos, ordenadas por dia.
   Future<List<TrainingPlanInfo>> getPlans() async {
     final db = await _dbHelper.database;
     final rows = await db.rawQuery('''
@@ -33,10 +31,9 @@ class TrainingPlanRepository {
     return TrainingPlanInfo.fromMap(rows.first);
   }
 
-  /// Ficha cujo dia corresponde ao dia da semana de hoje (ISO 1..7), se houver.
   Future<TrainingPlanInfo?> getTodayPlan() async {
     final db = await _dbHelper.database;
-    final today = DateTime.now().weekday; // 1 = segunda ... 7 = domingo
+    final today = DateTime.now().weekday;
     final rows = await db.rawQuery('''
       SELECT tp.id, tp.training_id, tp.day_id,
              t.name AS training_name, d.name AS day_name
@@ -63,7 +60,6 @@ class TrainingPlanRepository {
     return rows.map(PlanExercise.fromMap).toList();
   }
 
-  /// Cria a ficha e vincula os exercícios selecionados. Retorna o id da ficha.
   Future<int> createPlan({
     required int trainingId,
     required int dayId,
@@ -85,7 +81,6 @@ class TrainingPlanRepository {
     });
   }
 
-  /// Atualiza treino/dia e regrava a lista de exercícios da ficha.
   Future<void> updatePlan({
     required int planId,
     required int trainingId,
@@ -101,7 +96,6 @@ class TrainingPlanRepository {
         whereArgs: [planId],
       );
 
-      // Exercícios atuais.
       final existing = await txn.query(
         'training_plan_exercises',
         where: 'training_plan_id = ?',
@@ -112,7 +106,6 @@ class TrainingPlanRepository {
       };
       final desired = exerciseIds.toSet();
 
-      // Remove os que saíram (cascade apaga execuções relacionadas).
       for (final entry in existingByExercise.entries) {
         if (!desired.contains(entry.key)) {
           await txn.delete(
@@ -122,7 +115,6 @@ class TrainingPlanRepository {
           );
         }
       }
-      // Adiciona os novos.
       for (final exId in desired) {
         if (!existingByExercise.containsKey(exId)) {
           await txn.insert('training_plan_exercises', {

@@ -1,6 +1,3 @@
-// Modelos de domínio do InspireFit. Espelham as tabelas do banco local
-// (sem `user_id`, pois o app é offline e de usuário único) e alguns DTOs de
-// view usados pelas telas.
 
 class Day {
   final int id;
@@ -33,7 +30,6 @@ class Exercise {
       );
 }
 
-/// Ficha de treino (training_plan) já com os nomes resolvidos do treino e do dia.
 class TrainingPlanInfo {
   final int id;
   final int trainingId;
@@ -58,9 +54,8 @@ class TrainingPlanInfo {
       );
 }
 
-/// Exercício pertencente a uma ficha (training_plan_exercise) com nome resolvido.
 class PlanExercise {
-  final int id; // training_plan_exercise.id
+  final int id;
   final int trainingPlanId;
   final int exerciseId;
   final String exerciseName;
@@ -83,7 +78,6 @@ class PlanExercise {
       );
 }
 
-/// Uma execução agregada de um exercício numa sessão (training_execution).
 class ExecutionInput {
   final int trainingPlanExerciseId;
   final int setsDone;
@@ -98,7 +92,6 @@ class ExecutionInput {
   });
 }
 
-/// Execução já persistida, com nome do exercício (usada na edição de sessão).
 class ExecutionInfo {
   final int id;
   final int trainingPlanExerciseId;
@@ -126,7 +119,6 @@ class ExecutionInfo {
       );
 }
 
-/// Resultado da checagem "existe sessão nesta semana para a ficha?".
 class WeekSession {
   final bool exists;
   final int? sessionId;

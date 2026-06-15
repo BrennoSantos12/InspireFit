@@ -15,8 +15,6 @@ class _Serie {
   const _Serie(this.reps, this.weight);
 }
 
-/// Registro de uma sessão de treino, navegando exercício por exercício,
-/// com timer de descanso. Espelha `TrainingSessionView.vue`.
 class SessionScreen extends StatefulWidget {
   final int planId;
   const SessionScreen({super.key, required this.planId});
@@ -107,7 +105,6 @@ class _SessionScreenState extends State<SessionScreen> {
     });
   }
 
-  // --- Timer ---
   void _toggleTimer() {
     if (_timerRunning) {
       _ticker?.cancel();
@@ -167,7 +164,6 @@ class _SessionScreenState extends State<SessionScreen> {
         final setsDone = series.length;
         final totalReps = series.fold<double>(0, (a, s) => a + s.reps);
         final avgReps = (totalReps / setsDone).roundToDouble();
-        // Média ponderada de peso pelos reps (igual ao app Vue).
         final weightedWeight =
             series.fold<double>(0, (a, s) => a + s.weight * s.reps) / totalReps;
         final avgWeight =

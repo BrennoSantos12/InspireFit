@@ -24,7 +24,6 @@ class InspireFitApp extends StatelessWidget {
   }
 }
 
-/// Menu lateral equivalente ao hamburger do app antigo (sem login/perfil).
 class AppDrawer extends StatelessWidget {
   final String current;
   const AppDrawer({super.key, required this.current});

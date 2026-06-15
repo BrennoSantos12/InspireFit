@@ -1,7 +1,6 @@
 import '../data/database_helper.dart';
 import '../models/models.dart';
 
-/// Leitura dos catálogos pré-cadastrados: dias, treinos e exercícios.
 class CatalogRepository {
   final _dbHelper = DatabaseHelper.instance;
 
@@ -17,7 +16,6 @@ class CatalogRepository {
     return rows.map(Training.fromMap).toList();
   }
 
-  /// Lista exercícios com filtro opcional por nome (LIKE) e tipo.
   Future<List<Exercise>> getExercises({String? name, String? type}) async {
     final db = await _dbHelper.database;
     final where = <String>[];

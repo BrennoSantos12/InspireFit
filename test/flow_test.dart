@@ -13,7 +13,6 @@ void main() {
   setUpAll(() async {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
-    // Garante banco limpo para os seeds rodarem no onCreate.
     final dir = await databaseFactory.getDatabasesPath();
     final f = File('$dir/inspirefit.db');
     if (await f.exists()) await f.delete();
@@ -45,7 +44,6 @@ void main() {
     final exercises = await catalog.getExercises(type: 'superior');
     final exIds = exercises.take(3).map((e) => e.id).toList();
 
-    // Cria ficha em "Segunda-feira" (day_id=1) / "Treino 1" (training_id=1).
     final planId = await plans.createPlan(
       trainingId: 1,
       dayId: 1,
@@ -54,7 +52,6 @@ void main() {
     final planExercises = await plans.getPlanExercises(planId);
     expect(planExercises.length, 3);
 
-    // Duas sessões em segundas diferentes para gerar progresso.
     final s1 = await sessions.createSession(
       planId: planId,
       performedDate: DateTime(2026, 5, 4),
@@ -80,7 +77,6 @@ void main() {
       ],
     );
 
-    // Lê e edita as execuções da primeira sessão.
     final execs = await sessions.getSessionExecutions(s1);
     expect(execs.length, 3);
     expect(execs.first.weight, 20);
@@ -98,7 +94,6 @@ void main() {
     expect(reread.first.weight, 22);
     expect(reread.first.setsDone, 4);
 
-    // Aderência: ambas as sessões caíram na segunda (dia certo).
     final adherence = await reports.getPlanAdherence(
       DateTime(2026, 5, 1),
       DateTime(2026, 5, 31),
@@ -107,7 +102,6 @@ void main() {
     expect(mine.doneRightDay, 2);
     expect(mine.dayName, 'Segunda-feira');
 
-    // Progresso: deve haver evolução de carga.
     final progress = await reports.getExerciseProgress(
       planId,
       DateTime(2026, 5, 1),
@@ -115,13 +109,11 @@ void main() {
     );
     expect(progress.length, 3);
     expect(progress.first.timesPerformed, 2);
-    // Exercícios 2 e 3 não foram editados: 20kg -> 25kg, evolução positiva.
     final unedited = progress[1];
     expect(unedited.timesPerformed, 2);
     expect(unedited.improvementPercentage, isNotNull);
     expect(unedited.improvementPercentage! > 0, true);
 
-    // Deleta a ficha (cascade apaga sessões e execuções).
     await plans.deletePlan(planId);
     expect(await plans.getPlan(planId), isNull);
     final adherenceAfter = await reports.getPlanAdherence(

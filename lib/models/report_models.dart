@@ -1,7 +1,4 @@
-// DTOs de relatório, portados de `gym-api/app/schemas/report_schema.py`.
 
-/// Aderência de uma ficha no período: quantas vezes foi feita no dia certo,
-/// adiantada, em dia errado, e quantas ficaram sem fazer.
 class PlanAdherence {
   final int trainingPlanId;
   final int trainingId;
@@ -30,7 +27,6 @@ class PlanAdherence {
   int get doneTotal => doneRightDay + doneEarly + doneWrongDay;
 }
 
-/// Estatísticas de uma execução pontual de um exercício.
 class ExecutionStats {
   final int? setsDone;
   final double? reps;
@@ -45,7 +41,6 @@ class ExecutionStats {
   });
 }
 
-/// Progresso de um exercício dentro de uma ficha ao longo do período.
 class ExerciseProgress {
   final int exerciseId;
   final String exerciseName;

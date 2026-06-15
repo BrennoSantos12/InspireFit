@@ -8,7 +8,6 @@ import '../repositories/training_plan_repository.dart';
 import '../repositories/training_session_repository.dart';
 import '../theme/app_theme.dart';
 
-/// Relatórios de aderência e progresso. Espelha `ReportView.vue`.
 class ReportScreen extends StatefulWidget {
   static const route = '/report';
   const ReportScreen({super.key});
@@ -38,7 +37,6 @@ class _ReportScreenState extends State<ReportScreen> {
   }
 
   Future<void> _initRange() async {
-    // Período padrão: da primeira sessão registrada até hoje.
     final plans = await _plans.getPlans();
     String? earliest;
     for (final p in plans) {

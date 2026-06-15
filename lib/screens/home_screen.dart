@@ -10,8 +10,6 @@ import 'edit_session_screen.dart';
 import 'fichas_screen.dart';
 import 'session_screen.dart';
 
-/// Tela inicial: treino de hoje + demais fichas (atrasado / adiantar /
-/// concluído). Espelha `HomeView.vue`.
 class HomeScreen extends StatefulWidget {
   static const route = '/';
   const HomeScreen({super.key});
@@ -53,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
     if (mounted) setState(() => _loading = false);
   }
 
-  /// 'late' se o dia da ficha já passou esta semana, 'early' se ainda vem.
   String? _status(int dayId) {
     final today = DateTime.now().weekday;
     if (dayId < today) return 'late';

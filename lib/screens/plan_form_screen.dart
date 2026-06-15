@@ -8,8 +8,6 @@ import '../repositories/catalog_repository.dart';
 import '../repositories/training_plan_repository.dart';
 import '../theme/app_theme.dart';
 
-/// Formulário de criação/edição de ficha. Quando [planId] é nulo, cria; caso
-/// contrário, edita. Espelha `TrainingPlanView.vue` / `EditTrainingPlanView.vue`.
 class PlanFormScreen extends StatefulWidget {
   final int? planId;
   const PlanFormScreen({super.key, this.planId});
@@ -35,7 +33,6 @@ class _PlanFormScreenState extends State<PlanFormScreen> {
   int? _trainingId;
   final Set<int> _selected = {};
 
-  // Dias/treinos já usados por outras fichas (para desabilitar).
   Set<String> _usedDayNames = {};
   Set<String> _usedTrainingNames = {};
   String? _ownDayName;

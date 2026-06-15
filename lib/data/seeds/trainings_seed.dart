@@ -1,4 +1,3 @@
-/// Treinos pré-cadastrados ("Treino 1" .. "Treino 7").
 const List<String> kTrainingsSeed = [
   'Treino 1',
   'Treino 2',

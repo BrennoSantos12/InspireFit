@@ -2,8 +2,6 @@ import '../data/database_helper.dart';
 import '../models/report_models.dart';
 import 'training_session_repository.dart';
 
-/// Relatórios portados de `gym-api/app/routers/report_router.py`, adaptados
-/// para o banco local (sem `user_id`).
 class ReportRepository {
   final _dbHelper = DatabaseHelper.instance;
 
@@ -13,7 +11,6 @@ class ReportRepository {
         int.parse(parts[0]), int.parse(parts[1]), int.parse(parts[2]));
   }
 
-  /// Data planejada da ficha dentro da semana de uma data qualquer.
   DateTime _plannedDateInWeek(DateTime anyDayInWeek, int planDayId) {
     final start = TrainingSessionRepository.weekStart(anyDayInWeek);
     return start.add(Duration(days: planDayId - 1));
@@ -46,7 +43,6 @@ class ReportRepository {
       final planId = p['id'] as int;
       final planDayId = p['day_id'] as int;
 
-      // Total planejado: nº de dias no período cujo isoweekday == day_id.
       int plannedTotal = 0;
       for (var d = DateTime(startDate.year, startDate.month, startDate.day);
           !d.isAfter(endDate);
@@ -133,7 +129,6 @@ class ReportRepository {
     final totalSessions = sessions.length;
     final sessionIds = sessions.map((s) => s['id'] as int).toList();
 
-    // Execuções de todas as sessões do período, com a data já resolvida.
     final List<Map<String, Object?>> executions;
     if (sessionIds.isEmpty) {
       executions = [];

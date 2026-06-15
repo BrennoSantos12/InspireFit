@@ -8,7 +8,6 @@ import '../theme/app_theme.dart';
 import 'create_plan_screen.dart';
 import 'edit_plan_screen.dart';
 
-/// Lista de fichas com editar/excluir. Espelha `FichaView.vue`.
 class FichasScreen extends StatefulWidget {
   static const route = '/fichas';
   const FichasScreen({super.key});

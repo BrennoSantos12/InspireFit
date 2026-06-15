@@ -6,8 +6,6 @@ import '../models/models.dart';
 import '../repositories/training_session_repository.dart';
 import '../theme/app_theme.dart';
 
-/// Edição dos valores agregados (séries / reps / peso) de uma sessão já
-/// registrada. Espelha `EditTrainingSessionView.vue`.
 class EditSessionScreen extends StatefulWidget {
   final int sessionId;
   const EditSessionScreen({super.key, required this.sessionId});

@@ -1,5 +1,3 @@
-/// Exercícios pré-cadastrados, portados de `gym-api/app/seeds/exercise_seed.py`.
-/// Cada item é (nome, tipo) onde tipo ∈ {superior, inferior, posterior}.
 class ExerciseSeed {
   final String name;
   final String type;
@@ -7,7 +5,6 @@ class ExerciseSeed {
 }
 
 const List<ExerciseSeed> kExercisesSeed = [
-  // SUPERIOR - Peito
   ExerciseSeed('Supino Reto', 'superior'),
   ExerciseSeed('Supino Inclinado', 'superior'),
   ExerciseSeed('Supino Declinado', 'superior'),
@@ -28,7 +25,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Pullover', 'superior'),
   ExerciseSeed('Pullover na Polia', 'superior'),
 
-  // SUPERIOR - Ombros
   ExerciseSeed('Desenvolvimento com Barra', 'superior'),
   ExerciseSeed('Desenvolvimento com Halteres', 'superior'),
   ExerciseSeed('Desenvolvimento Arnold', 'superior'),
@@ -48,7 +44,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Encolhimento com Halteres', 'superior'),
   ExerciseSeed('Encolhimento no Smith', 'superior'),
 
-  // SUPERIOR - Bíceps
   ExerciseSeed('Rosca Direta com Barra', 'superior'),
   ExerciseSeed('Rosca Direta com Halteres', 'superior'),
   ExerciseSeed('Rosca Alternada', 'superior'),
@@ -68,7 +63,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Rosca Drag', 'superior'),
   ExerciseSeed('Rosca Zottman', 'superior'),
 
-  // SUPERIOR - Tríceps
   ExerciseSeed('Tríceps Testa', 'superior'),
   ExerciseSeed('Tríceps Francês', 'superior'),
   ExerciseSeed('Tríceps Pulley', 'superior'),
@@ -84,13 +78,11 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Tríceps na Corda Acima da Cabeça', 'superior'),
   ExerciseSeed('Tríceps Banco', 'superior'),
 
-  // SUPERIOR - Antebraço
   ExerciseSeed('Rosca Punho Pronada', 'superior'),
   ExerciseSeed('Rosca Punho Supinada', 'superior'),
   ExerciseSeed('Rosca Punho com Halteres', 'superior'),
   ExerciseSeed('Farmer Walk', 'superior'),
 
-  // INFERIOR - Quadríceps
   ExerciseSeed('Agachamento Livre', 'inferior'),
   ExerciseSeed('Agachamento no Smith', 'inferior'),
   ExerciseSeed('Agachamento Frontal', 'inferior'),
@@ -111,7 +103,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Step Up', 'inferior'),
   ExerciseSeed('Pistol Squat', 'inferior'),
 
-  // INFERIOR - Posterior
   ExerciseSeed('Levantamento Terra', 'posterior'),
   ExerciseSeed('Levantamento Terra Sumô', 'posterior'),
   ExerciseSeed('Levantamento Terra Romeno', 'posterior'),
@@ -139,7 +130,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Cadeira Adutora', 'posterior'),
   ExerciseSeed('Kettlebell Swing', 'posterior'),
 
-  // INFERIOR - Panturrilha
   ExerciseSeed('Panturrilha em Pé', 'inferior'),
   ExerciseSeed('Panturrilha Sentado', 'inferior'),
   ExerciseSeed('Panturrilha no Leg Press', 'inferior'),
@@ -148,7 +138,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Panturrilha no Hack', 'inferior'),
   ExerciseSeed('Panturrilha Donkey', 'inferior'),
 
-  // POSTERIOR - Costas (Dorsal)
   ExerciseSeed('Barra Fixa', 'posterior'),
   ExerciseSeed('Barra Fixa Pronada', 'posterior'),
   ExerciseSeed('Barra Fixa Supinada', 'posterior'),
@@ -174,7 +163,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Pulldown', 'posterior'),
   ExerciseSeed('Remada T', 'posterior'),
 
-  // CORE - Abdômen
   ExerciseSeed('Prancha', 'inferior'),
   ExerciseSeed('Prancha Lateral', 'inferior'),
   ExerciseSeed('Abdominal Crunch', 'inferior'),
@@ -184,7 +172,6 @@ const List<ExerciseSeed> kExercisesSeed = [
   ExerciseSeed('Elevação de Pernas na Barra', 'inferior'),
   ExerciseSeed('Russian Twist', 'inferior'),
 
-  // POSTERIOR - Lombar
   ExerciseSeed('Hiperextensão Lombar', 'posterior'),
   ExerciseSeed('Extensão Lombar na Máquina', 'posterior'),
   ExerciseSeed('Superman', 'posterior'),

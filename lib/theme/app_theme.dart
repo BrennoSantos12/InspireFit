@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
-/// Paleta e tema escuro do InspireFit (espelha o app Vue: fundo preto, texto
-/// branco, verde como cor de ação, vermelho para excluir).
 class AppColors {
   static const black = Color(0xFF000000);
-  static const surface = Color(0xFF111114); // gray-900 aprox.
-  static const surfaceAlt = Color(0xFF1F2937); // gray-800
-  static const border = Color(0xFF374151); // gray-700
+  static const surface = Color(0xFF111114);
+  static const surfaceAlt = Color(0xFF1F2937);
+  static const border = Color(0xFF374151);
   static const borderDim = Color(0xFF1F2937);
-  static const textMuted = Color(0xFF9CA3AF); // gray-400
-  static const textFaint = Color(0xFF6B7280); // gray-500
+  static const textMuted = Color(0xFF9CA3AF);
+  static const textFaint = Color(0xFF6B7280);
 
-  static const green = Color(0xFF15803D); // green-700 (ações)
-  static const greenBright = Color(0xFF22C55E); // green-500 (concluído)
-  static const blue = Color(0xFF3B82F6); // treino de hoje
-  static const orange = Color(0xFFF97316); // adiantar
-  static const red = Color(0xFFEF4444); // atrasado / excluir
+  static const green = Color(0xFF15803D);
+  static const greenBright = Color(0xFF22C55E);
+  static const blue = Color(0xFF3B82F6);
+  static const orange = Color(0xFFF97316);
+  static const red = Color(0xFFEF4444);
 }
 
 ThemeData buildAppTheme() {
