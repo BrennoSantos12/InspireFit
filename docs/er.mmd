@@ -1,0 +1,30 @@
+erDiagram
+    days ||--o{ training_plans : "tem"
+    trainings ||--o{ training_plans : "tem"
+    training_plans ||--o{ training_plan_exercises : "contém"
+    exercises ||--o{ training_plan_exercises : "usado em"
+    training_plans ||--o{ training_sessions : "realizada como"
+    training_sessions ||--o{ training_executions : "registra"
+    training_plan_exercises ||--o{ training_executions : "executado em"
+    days { int id PK
+        text name "ex.: Segunda-feira" }
+    trainings { int id PK
+        text name "ex.: Treino A - Peito" }
+    exercises { int id PK
+        text name UK
+        text type "tipo do exercício" }
+    training_plans { int id PK
+        int training_id FK
+        int day_id FK }
+    training_plan_exercises { int id PK
+        int training_plan_id FK
+        int exercise_id FK }
+    training_sessions { int id PK
+        int training_plan_id FK
+        text performed_date "data realizada" }
+    training_executions { int id PK
+        int training_session_id FK
+        int training_plan_exercise_id FK
+        int sets_done "séries feitas"
+        real reps "repetições"
+        real weight "carga (kg)" }

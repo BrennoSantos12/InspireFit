@@ -1,0 +1,11 @@
+flowchart LR
+    User((Usuário))
+    User --> UC1[Ver fichas de treino]
+    User --> UC2[Criar / editar ficha]
+    User --> UC3[Executar sessão de treino]
+    UC3 --> UC3a[Usar timer de descanso 120s]
+    UC3 --> UC3b[Registrar séries, reps e carga]
+    User --> UC4[Editar sessão realizada]
+    User --> UC5[Ver relatórios]
+    UC5 --> UC5a[Aderência ao plano]
+    UC5 --> UC5b[Progresso de carga]

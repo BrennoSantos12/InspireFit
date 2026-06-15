@@ -1,0 +1,29 @@
+flowchart TD
+    subgraph UI["Camada de Apresentação (screens)"]
+        Home[Home]
+        Fichas[Fichas]
+        Criar["Criar / Editar Ficha"]
+        Sessao["Sessão (timer 120s)"]
+        Relatorios[Relatórios]
+    end
+    subgraph State["Gerência de Estado (provider)"]
+        MP[MultiProvider]
+    end
+    subgraph Repos["Camada de Domínio (repositories)"]
+        Catalog[CatalogRepository]
+        Plan[TrainingPlanRepository]
+        Session[TrainingSessionRepository]
+        Report[ReportRepository]
+    end
+    subgraph Data["Camada de Dados"]
+        DBH[DatabaseHelper]
+        DB[(SQLite local inspirefit.db)]
+        Seeds[Seeds: dias, treinos, exercícios]
+    end
+    UI --> MP --> Repos
+    Catalog --> DBH
+    Plan --> DBH
+    Session --> DBH
+    Report --> DBH
+    DBH --> DB
+    Seeds -. onCreate .-> DB
